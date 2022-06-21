@@ -2,8 +2,7 @@
 
 This project is use to test deployment of a Python API exposing a machine learning pipeline provided by HuggingFace's transformers library.
 
-[![build status](https://github.com/rtrompier/azure-sentiment-analysis-docker/actions/workflows/build_test.yml/badge.svg)][ci-tests]
-[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)][pullrequest]
+![build status](https://github.com/rtrompier/azure-sentiment-analysis-docker/actions/workflows/build_test.yml/badge.svg)
 
 ## Requirements
 
