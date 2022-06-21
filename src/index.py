@@ -18,3 +18,7 @@ def index():
         return jsonify({
             "error": "Pass a sentence as query parameter for a personalized response."
         })
+
+@app.route('/health')
+def health():
+    return jsonify('{"status": "ok"}')
