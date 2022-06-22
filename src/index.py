@@ -3,12 +3,14 @@ from .huggingface import HuggingFace
 
 import logging
 
+logging.basicConfig(level=logging.INFO)
+
 app = Flask(__name__)
 hf = HuggingFace('nlptown/bert-base-multilingual-uncased-sentiment')
 
 @app.route('/')
 def index():
-    logging.info('Start process request')
+    app.logger.info('Start process request')
     sentence = request.args.get('sentence')
 
     if sentence:
