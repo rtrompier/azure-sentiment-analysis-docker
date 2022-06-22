@@ -7,6 +7,7 @@ This project is use to test deployment of a Python API exposing a machine learni
 ## Requirements
 
 * Python 3.9
+* Docker
 
 
 ## Development
@@ -32,6 +33,7 @@ The image is hosted on Dockerhub.
 
 The deployment is managed by another [Github Action pipeline](https://github.com/rtrompier/azure-sentiment-analysis-infra) using Terraform.
 
+Once the deployment is down, the application is available on my [Azure tenant](https://as-test-rtrm.azurewebsites.net/?sentence=I%20will%20be%20really%20happy%20to%20work%20at%20hugging%20face)
 
 ## TODO
 
