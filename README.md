@@ -16,11 +16,14 @@ To start locally the project, execute the folowing commands :
 > To install dependencies : `pip install -r requirements.txt`
 To start the server : `flask run`
 
+And navigate to : http://localhost:5000?sentence=I%20will%20be%20really%20happy%20to%20work%20at%20hugging%20face
+
 Or use my own docker container : 
 
-> docker run -d -p 5000:5000 --name azure-sentiment-analysis rtrompier/azure-sentiment-analysis:latest
+> docker run -d -p 80:80 --name azure-sentiment-analysis rtrompier/azure-sentiment-analysis:latest
 
-And navigate to : http://127.0.0.1:5000/?sentence=I%20will%20be%20really%20happy%20to%20work%20at%20hugging%20face
+And navigate to : http://localhost?sentence=I%20will%20be%20really%20happy%20to%20work%20at%20hugging%20face
+
 
 ## Deployment
 
