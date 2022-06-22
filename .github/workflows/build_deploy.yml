@@ -31,9 +31,28 @@ jobs:
           push: true
           tags: rtrompier/azure-sentiment-analysis:latest
       
-      # - name: Azure Login
-      #   uses: azure/login@v1
-      #   with:
-      #     creds: '{"clientId":"${{ secrets.AZURE_AD_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_AD_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_AD_TENANT_ID }}"}'
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: '{"clientId":"${{ secrets.AZURE_AD_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_AD_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_AD_TENANT_ID }}"}'
+
+      - name: Fetching Azure Functions Publishing Profile
+        id: fncapp
+        uses: azure/powershell@v1
+        with:
+          inlineScript: |
+              $profile = ""
+              $profile = Get-AzWebAppPublishingProfile -ResourceGroupName RG-WE-D-FUNCTIONS -Name azure-sentiment-analysis
+              $profile = $profile.Replace("`r", "").Replace("`n", "")
+              Write-Output "::set-output name=pubprofile::$profile"
+              Remove-Variable profile
+          azPSVersion: "latest"
+
+      - name: Deploy container
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: as-test-rtrm
+          publish-profile: ${{ steps.fncapp.outputs.pubprofile }}
+          images: 'rtrompier/azure-sentiment-analysis:latest'
       
       
