@@ -27,8 +27,11 @@ And navigate to : http://localhost?sentence=I%20will%20be%20really%20happy%20to%
 
 ## Deployment
 
-The deployment is managed by Github Action pipeline.
-It generate a Docker image and deploy it to Azure
+This project have a Github Action pipeline to build the docker image.
+The image is hosted on Dockerhub.
+
+The deployment is managed by another [Github Action pipeline](https://github.com/rtrompier/azure-sentiment-analysis-infra) using Terraform.
+
 
 ## TODO
 
